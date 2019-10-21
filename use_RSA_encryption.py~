@@ -1,0 +1,36 @@
+import random
+
+class RSA_Keys:
+
+    def __init__(self, p, q):
+        self.n = p * q
+        self.m = (p-1) * (q-1)
+        
+        self.e = random.randint(2, n)
+
+        self.d = gcdExtended(e, m, 1, 1)
+
+    def encrypt(self,message): #just for a number right now
+        return (message**self.e)%self.n #returns code
+
+    def decrypt(self, code):
+        return (code**self.d)%self.n #returns message
+
+
+def gcdExtended(a, b, x, y): 
+    # Base Case 
+    if a == 0 :  
+        x = 0
+        y = 1
+        return b 
+          
+    x1 = 1
+    y1 = 1 # To store results of recursive call 
+    gcd = gcdExtended(b%a, a, x1, y1) 
+  
+    # Update x and y using results of recursive 
+    # call 
+    x = y1 - (b/a) * x1 
+    y = x1 
+  
+    return gcd 

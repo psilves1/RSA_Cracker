@@ -1,0 +1,8 @@
+from use_RSA_encryption import *
+from make_primes import *
+
+keys = RSA_Keys(getRandomPrime(1000, 100000), getRandomPrime(1000,100000))
+
+print(keys.encrypt(10))
+
+print(keys.decrypt(10))
