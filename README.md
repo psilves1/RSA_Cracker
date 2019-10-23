@@ -5,3 +5,6 @@ I know that it will probably make the dev process a little longer but the goal o
 and what is going on behind the scene. 
 
 Once I know the encrpytion is working properly, I will then write another piece of code to try and crack it
+
+Feel free to download it and mess around with it if you want to get a better understanding of RSA Encrpytion and how 
+secure it really is
