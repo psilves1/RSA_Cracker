@@ -3,13 +3,23 @@ import random
 class RSA_Keys:
 
     def __init__(self, p, q):
+
+        self.p = p
+        self.q = q
+
         self.n = p * q
         self.m = (p-1) * (q-1)
         
         self.e = random.randint(2, self.n)
 
-        self.d = gcdExtended(self.e, self.m, 1, 1)
+        self.d = euclid(self.e, self.m, 1, 1)
 
+    def printVals(self):
+        print("P: " + str(self.p))
+        print("Q: " + str(self.q))
+        print("E: " + str(self.e))
+        print("D: " + str(self.d))
+        
     def encrypt(self,message): #just for a number right now
         return (message**self.e)%self.n #returns code
 
@@ -17,7 +27,7 @@ class RSA_Keys:
         return (code**self.d)%self.n #returns message
 
 
-def gcdExtended(a, b, x, y): 
+def euclid(a, b, x, y): 
     # Base Case 
     if a == 0 :  
         x = 0
@@ -25,11 +35,9 @@ def gcdExtended(a, b, x, y):
         return b 
           
     x1 = 1
-    y1 = 1 # To store results of recursive call 
-    gcd = gcdExtended(b%a, a, x1, y1) 
-  
-    # Update x and y using results of recursive 
-    # call 
+    y1 = 1 
+    gcd = euclid(b%a, a, x1, y1) 
+   
     x = y1 - (b/a) * x1 
     y = x1 
   
