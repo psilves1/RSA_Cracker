@@ -1,4 +1,5 @@
 import random
+from math import *
 
 class RSA_Keys:
 
@@ -21,10 +22,10 @@ class RSA_Keys:
         print("D: " + str(self.d))
         
     def encrypt(self,message): #just for a number right now
-        return (message**self.e)%self.n #returns code
+        return (pow(message,self.e))%self.n #returns code
 
     def decrypt(self, code):
-        return (code**self.d)%self.n #returns message
+        return (pow(code, self.d))%self.n #returns message
 
 
 def euclid(a, b, x, y): 
